@@ -12,6 +12,14 @@ public class TodoPage {
 
     public SelenideElement newtodoInput = $(".new-todo");
 
+    public SelenideElement editInput = $(".edit");
+
+    public SelenideElement toggleInput = $(".toggle");
+
+    public SelenideElement clearcompletedButton = $(".clear-completed");
+
+    public SelenideElement todolistUl = $("ul");
+
     public void addTodo(String text) {
         newtodoInput.sendKeys(text);
         newtodoInput.pressEnter();
@@ -22,6 +30,21 @@ public class TodoPage {
     }
 
     public void clickTodoAdded() {
-        elementLabel.click();
+        elementLabel.doubleClick();
+    }
+    public void editTodo(String text) {
+        editInput.setValue(null);
+        clickTodoAdded();
+        editInput.sendKeys(text);
+        newtodoInput.pressEnter();
+    }
+    public void toggleInput() {
+        toggleInput.click();
+    }
+    public void clearcompleted() {
+        clearcompletedButton.click();
+    }
+    public boolean listExist() {
+        return todolistUl.isDisplayed();
     }
 }
